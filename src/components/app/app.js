@@ -1,45 +1,19 @@
 import React from 'react';
 
+import AppBaseHeader from '../app-base-heder'
+import AppIinformation from '../app-information'
+import TodoList from '../todo-list'
+import AppOther from '../app-other';
+
 function App() {
   return (
     <div className="app">
       <AppBaseHeader />
       <AppIinformation />
       <TodoList />
-      <TodoListItem />
+      <AppOther />
     </div>
   );
 }
-
-function AppBaseHeader() {
-  return (
-    <h1>Todo List</h1>
-  );
-}
-
-function AppIinformation() {
-  return (
-    <div>information</div>
-  );
-}
-
-function TodoList() {
-  return (
-    <ul>
-      <li>
-        <p>1</p>
-        <button>important</button>
-        <button>del</button>
-      </li>
-    </ul>
-  );
-}
-
-function TodoListItem() {
-  return (
-    <div>other</div>
-  );
-}
-
 
 export default App;
