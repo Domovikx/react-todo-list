@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AppBaseHeader from '../app-base-heder'
-import AppIinformation from '../app-information'
+import AppSearchPanel from '../app-search-panel'
 import TodoList from '../todo-list'
 import AppOther from '../app-other';
 
@@ -11,7 +11,7 @@ const App = () => (
   <>
     <CssBaseline />
     <AppBaseHeader />
-    <AppIinformation />
+    <AppSearchPanel />
     <TodoList />
     <AppOther />
   </>
