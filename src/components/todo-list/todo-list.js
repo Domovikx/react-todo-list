@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import TodoListItem from './todo-list-item';
 
@@ -9,17 +9,17 @@ function TodoList({ todoData }) {
     const { id, ...itemProps } = item;
 
     return (
-      <li key={id}>
+      <Fragment key={id}>
         <TodoListItem {...itemProps} />
-      </li>
+      </Fragment>
     );
   })
 
 
   return (
-    <ul>
+    <>
       {elements}
-    </ul>
+    </>
   );
 }
 

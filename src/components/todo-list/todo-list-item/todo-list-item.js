@@ -1,22 +1,13 @@
 import React from 'react';
-import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles(theme => ({
-  button: {
-    margin: 10
-  }
-}));
+import ButtonDel from './button-del';
+import ButtonDone from './button-done';
+import ButtonImportant from './button-important';
+
 
 function TodoListItem({ content, done = false, important = false }) {
-
-  const classes = useStyles();
-
-  const styleImportant = {
-    color: important ? 'crimson' : ''
-  }
-  const styleDone = {
-    color: done ? 'darkcyan' : ''
-  }
 
   return (
     <Grid
@@ -24,26 +15,14 @@ function TodoListItem({ content, done = false, important = false }) {
       justify="center"
       alignItems="center"
     >
-
       <Grid >
         <Typography>{content}</Typography>
       </Grid>
 
       <Grid >
-        <Button variant="contained"
-          className={classes.button}
-          style={styleImportant}
-        >
-          important</Button>
-        <Button variant="contained"
-          className={classes.button}
-          style={styleDone}
-        >
-          done</Button>
-        <Button variant="contained"
-          className={classes.button}
-        >
-          del</Button>
+        <ButtonImportant important={important} />
+        <ButtonDone done={done} />
+        <ButtonDel />
       </Grid>
 
     </Grid>
