@@ -3,18 +3,15 @@ import React from 'react';
 import TodoListItem from './todo-list-item';
 
 function TodoList({ todoData }) {
-  console.log('todoData', todoData)
 
   const elements = todoData.map((item) => {
-    console.log('item :', item);
+
+    const { id, ...itemProps } = item;
+
     return (
-      <ul>
-        <TodoListItem
-          content={item.content}
-          done={item.done}
-          important={item.important}
-        />
-      </ul>
+      <li key={id}>
+        <TodoListItem {...itemProps} />
+      </li>
     );
   })
 

@@ -8,7 +8,7 @@ import { Grid } from '@material-ui/core';
 export default function AppAddItemPanel() {
 	return (
 		<Grid
-			container xs
+			container xs item
 			direction="row"
 			justify="center"
 			alignItems="stretch"

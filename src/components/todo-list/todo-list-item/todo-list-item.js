@@ -16,13 +16,14 @@ function TodoListItem({ content, done = false, important = false }) {
     <Grid
       container
       justify="center"
-      alignItems="center">
+      alignItems="center"
+    >
 
-      <Grid>
+      <Grid >
         <Typography>{content}</Typography>
       </Grid>
 
-      <Grid>
+      <Grid >
         <Button variant="contained"
           className={classes.button}>
           important</Button>

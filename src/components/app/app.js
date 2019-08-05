@@ -14,9 +14,9 @@ class App extends Component {
     super(props);
     this.state = {
       todoData: [
-        { content: '1', done: false, important: false },
-        { content: '2', done: true, important: false },
-        { content: '3', done: true, important: true }
+        { content: '1', done: false, important: false, id:1 },
+        { content: '2', done: true, important: false, id:2 },
+        { content: '3', done: true, important: true, id:3 }
       ]
     }
   }
