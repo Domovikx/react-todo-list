@@ -8,20 +8,15 @@ import { Grid } from '@material-ui/core';
 export default function AppAddItemPanel() {
 	return (
 		<Grid
-			container
-			spacing={1}
+			container xs
 			direction="row"
 			justify="center"
-			alignItems=""
+			alignItems="stretch"
 		>
-			<Grid item xs={12} sm={10}>
+			<Grid item xs={12} md={9}>
 				<TextAreaMultiline />
 			</Grid>
-			<Grid container item xs={2} sm={2}
-						alignItems="stretch"
-			>
-				<TheButton />
-			</Grid>
+			<TheButton />
 		</Grid>
 	);
 }

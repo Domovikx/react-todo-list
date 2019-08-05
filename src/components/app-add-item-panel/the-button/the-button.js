@@ -11,6 +11,6 @@ const useStyles = makeStyles(theme => ({
 export default function TheButton() {
   const classes = useStyles();
   return (
-      <Button className={classes.button}>Default</Button>   
+      <Button className={classes.button}>Add</Button>   
   );
 }
