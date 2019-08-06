@@ -10,19 +10,27 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      todoData: [
-        { content: '1', done: false, important: false, id: 1 },
-        { content: '2', done: true, important: false, id: 2 },
-        { content: '3', done: true, important: true, id: 3 }
-      ]
-    }
+  state = {
+    todoData: [
+      { content: '1', done: false, important: false, id: 1 },
+      { content: '2', done: true, important: false, id: 2 },
+      { content: '3', done: true, important: true, id: 3 }
+    ]
   }
 
+
   onDelited = (id) => {
-    console.log(`Del ${id}`)
+    this.setState(({ todoData }) => {
+      const newTodoData = [...todoData]
+      const idx = newTodoData.findIndex((el) => el.id === id)
+      newTodoData.splice(idx, 1)
+      return {
+        todoData: newTodoData
+      }
+    }
+    )
+
+
   }
   onImportant = (id) => {
     console.log(`Important ${id}`)
