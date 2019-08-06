@@ -45,23 +45,24 @@ class App extends Component {
       return { todoData: [...todoData, newItem] }
     })
   }
+
+  toggleProp(arr, id, propName) {
+    const newArr = [...arr]
+    const idx = newArr.findIndex((el) => el.id === id)
+    const oldItem = newArr[idx]
+    const newItem = { ...oldItem, [propName]: !oldItem[propName] }
+    newArr[idx] = newItem
+    return newArr
+  }
   onImportant = (id) => {
     this.setState(({ todoData }) => {
-      const idx = this.idx(id)
-      const newTodoData = [...todoData]
-      const oldItem = newTodoData[idx]
-      const newItem = { ...oldItem, important: !oldItem.important }
-      newTodoData[idx] = newItem;
+      const newTodoData = this.toggleProp(todoData, id, 'important')
       return { todoData: newTodoData }
     })
   }
   onDone = (id) => {
     this.setState(({ todoData }) => {
-      const idx = this.idx(id)
-      const newTodoData = [...todoData]
-      const oldItem = newTodoData[idx]
-      const newItem = { ...oldItem, done: !oldItem.done }
-      newTodoData[idx] = newItem;
+      const newTodoData = this.toggleProp(todoData, id, 'done')
       return { todoData: newTodoData }
     })
   }
