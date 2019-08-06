@@ -7,7 +7,7 @@ import ButtonDone from './button-done';
 import ButtonImportant from './button-important';
 
 
-function TodoListItem({ content, done = false, important = false }) {
+function TodoListItem({ content, done = false, important = false, ...props }) {
 
   return (
     <Grid
@@ -20,9 +20,17 @@ function TodoListItem({ content, done = false, important = false }) {
       </Grid>
 
       <Grid >
-        <ButtonImportant important={important} />
-        <ButtonDone done={done} />
-        <ButtonDel />
+        <ButtonImportant
+          important={important}
+          onImportant={props.onImportant}
+        />
+        <ButtonDone
+          done={done}
+          onDone={props.onDone}
+        />
+        <ButtonDel
+          onDelited={props.onDelited}
+        />
       </Grid>
 
     </Grid>

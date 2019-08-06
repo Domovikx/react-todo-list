@@ -1,17 +1,22 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 
-export default function ButtonImportant({ important = false }) {
+export default function ButtonImportant({ important = false, onImportant }) {
 
-    const style = {
-        margin: 10,
-        color: important ? 'crimson' : ''
-    }
+	const style = {
+		margin: 10,
+		color: important ? 'crimson' : ''
+	}
 
-    return (
-        <Button
-            variant="contained"
-            style={style}
-        >important</Button>
-    )
+	const onClick = () => {
+		onImportant()
+	}
+
+	return (
+		<Button
+			variant="contained"
+			style={style}
+			onClick={onClick}
+		>important</Button>
+	)
 }

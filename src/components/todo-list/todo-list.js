@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import TodoListItem from './todo-list-item';
 
-function TodoList({ todoData }) {
+function TodoList({ todoData, ...props }) {
 
   const elements = todoData.map((item) => {
 
@@ -10,7 +10,10 @@ function TodoList({ todoData }) {
 
     return (
       <Fragment key={id}>
-        <TodoListItem {...itemProps} />
+        <TodoListItem
+          {...itemProps}
+          {...props}
+        />
       </Fragment>
     );
   })

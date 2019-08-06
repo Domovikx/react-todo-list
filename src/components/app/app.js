@@ -14,14 +14,22 @@ class App extends Component {
     super(props);
     this.state = {
       todoData: [
-        { content: '1', done: false, important: false, id:1 },
-        { content: '2', done: true, important: false, id:2 },
-        { content: '3', done: true, important: true, id:3 }
+        { content: '1', done: false, important: false, id: 1 },
+        { content: '2', done: true, important: false, id: 2 },
+        { content: '3', done: true, important: true, id: 3 }
       ]
     }
   }
 
-
+  onDelited = () => {
+    console.log('Del')
+  }
+  onImportant = () => {
+    console.log('Important')
+  }
+  onDone = () => {
+    console.log('Done')
+  }
 
   render() {
     return (
@@ -31,6 +39,9 @@ class App extends Component {
         <AppSearchPanel />
         <TodoList
           todoData={this.state.todoData}
+          onDelited={this.onDelited}
+          onImportant={this.onImportant}
+          onDone={this.onDone}
         />
         <AppAddItemPanel />
       </>
