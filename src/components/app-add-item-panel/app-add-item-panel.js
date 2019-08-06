@@ -5,7 +5,7 @@ import TheButton from './the-button';
 import { Grid } from '@material-ui/core';
 
 
-export default function AppAddItemPanel() {
+export default function AppAddItemPanel({ onAdd }) {
 	return (
 		<Grid
 			container xs item
@@ -16,7 +16,9 @@ export default function AppAddItemPanel() {
 			<Grid item xs={12} md={9}>
 				<TextAreaMultiline />
 			</Grid>
-			<TheButton />
+			<TheButton
+				onAdd={()=> onAdd('123')}
+		/>
 		</Grid>
 	);
 }

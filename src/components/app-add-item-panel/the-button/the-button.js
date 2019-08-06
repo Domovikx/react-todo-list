@@ -1,16 +1,17 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-const useStyles = makeStyles(theme => ({
-  button: {
-    margin: theme.spacing(1),
-  }
-}));
+export default function TheButton({ onAdd }) {
 
-export default function TheButton() {
-  const classes = useStyles();
+  const style = {
+    margin: 10
+  }
+
   return (
-      <Button className={classes.button}>Add</Button>   
-  );
+    <Button
+      style={style}
+      onClick={onAdd}
+    >Add</Button>
+  )
+
 }

@@ -18,19 +18,28 @@ class App extends Component {
     ]
   }
 
+  maxId = 100
 
   onDelited = (id) => {
     this.setState(({ todoData }) => {
       const newTodoData = [...todoData]
       const idx = newTodoData.findIndex((el) => el.id === id)
       newTodoData.splice(idx, 1)
-      return {
-        todoData: newTodoData
-      }
-    }
-    )
-
-
+      return { todoData: newTodoData }
+    })
+  }
+  onAdd = (content) => {
+    console.log('add');
+    this.setState(({ todoData }) => {
+      const newTodoData = [...todoData]
+      newTodoData.push({
+        content,
+        done: false,
+        important: false,
+        id: this.maxId++
+      })
+      return { todoData: newTodoData }
+    })
   }
   onImportant = (id) => {
     console.log(`Important ${id}`)
@@ -51,7 +60,9 @@ class App extends Component {
           onImportant={this.onImportant}
           onDone={this.onDone}
         />
-        <AppAddItemPanel />
+        <AppAddItemPanel
+          onAdd={this.onAdd}
+        />
       </>
     )
   }
