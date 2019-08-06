@@ -9,16 +9,24 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 
 class App extends Component {
+  maxId = 100
 
   state = {
     todoData: [
-      { content: '1', done: false, important: false, id: 1 },
-      { content: '2', done: true, important: false, id: 2 },
-      { content: '3', done: true, important: true, id: 3 }
+      this.createNewItem('1'),
+      this.createNewItem('2'),
+      this.createNewItem('3')
     ]
   }
 
-  maxId = 100
+  createNewItem(content) {
+    return {
+      content,
+      done: false,
+      important: false,
+      id: this.maxId++
+    }
+  }
 
   onDelited = (id) => {
     this.setState(({ todoData }) => {
@@ -31,14 +39,8 @@ class App extends Component {
   onAdd = (content) => {
     console.log('add');
     this.setState(({ todoData }) => {
-      const newTodoData = [...todoData]
-      newTodoData.push({
-        content,
-        done: false,
-        important: false,
-        id: this.maxId++
-      })
-      return { todoData: newTodoData }
+      const newItem = this.createNewItem(content)
+      return { todoData: [...todoData, newItem] }
     })
   }
   onImportant = (id) => {
