@@ -16,7 +16,7 @@ class App extends Component {
       this.createNewItem('1'),
       this.createNewItem('2'),
       this.createNewItem('3')
-    ]
+    ],
   }
 
   createNewItem(content) {
@@ -66,12 +66,21 @@ class App extends Component {
     })
   }
 
+  countTodo = () => this.state.todoData.length
+  countDone = () => this.state.todoData.filter((el) => el.done).length
+  countImportant = () => this.state.todoData.filter((el) => el.important).length
+
   render() {
     return (
       <>
         <CssBaseline />
-        <AppBaseHeader />
-        <AppSearchPanel />
+        <AppBaseHeader
+          countTodo={this.countTodo}
+          countDone={this.countDone}
+          countImportant={this.countImportant}
+        />
+        <AppSearchPanel
+        />
         <TodoList
           todoData={this.state.todoData}
           onDelited={this.onDelited}
