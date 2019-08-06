@@ -12,7 +12,9 @@ function TodoList({ todoData, ...props }) {
       <Fragment key={id}>
         <TodoListItem
           {...itemProps}
-          {...props}
+          onDelited={() => props.onDelited(id)}
+          onDone={() => props.onDone(id)}
+          onImportant={() => props.onImportant(id)}
         />
       </Fragment>
     );

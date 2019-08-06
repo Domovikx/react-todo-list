@@ -21,14 +21,14 @@ class App extends Component {
     }
   }
 
-  onDelited = () => {
-    console.log('Del')
+  onDelited = (id) => {
+    console.log(`Del ${id}`)
   }
-  onImportant = () => {
-    console.log('Important')
+  onImportant = (id) => {
+    console.log(`Important ${id}`)
   }
-  onDone = () => {
-    console.log('Done')
+  onDone = (id) => {
+    console.log(`Done ${id}`)
   }
 
   render() {
