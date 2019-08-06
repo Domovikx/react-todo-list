@@ -28,10 +28,12 @@ class App extends Component {
     }
   }
 
+  idx = (id) => this.state.todoData.findIndex((el) => el.id === id)
+
   onDelited = (id) => {
     this.setState(({ todoData }) => {
+      const idx = this.idx(id)
       const newTodoData = [...todoData]
-      const idx = newTodoData.findIndex((el) => el.id === id)
       newTodoData.splice(idx, 1)
       return { todoData: newTodoData }
     })
@@ -44,10 +46,24 @@ class App extends Component {
     })
   }
   onImportant = (id) => {
-    console.log(`Important ${id}`)
+    this.setState(({ todoData }) => {
+      const idx = this.idx(id)
+      const newTodoData = [...todoData]
+      const oldItem = newTodoData[idx]
+      const newItem = { ...oldItem, important: !oldItem.important }
+      newTodoData[idx] = newItem;
+      return { todoData: newTodoData }
+    })
   }
   onDone = (id) => {
-    console.log(`Done ${id}`)
+    this.setState(({ todoData }) => {
+      const idx = this.idx(id)
+      const newTodoData = [...todoData]
+      const oldItem = newTodoData[idx]
+      const newItem = { ...oldItem, done: !oldItem.done }
+      newTodoData[idx] = newItem;
+      return { todoData: newTodoData }
+    })
   }
 
   render() {
