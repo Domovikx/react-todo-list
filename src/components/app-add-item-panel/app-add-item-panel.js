@@ -5,7 +5,7 @@ import TheButton from './the-button';
 import { Grid } from '@material-ui/core';
 
 
-export default function AppAddItemPanel({ onAdd }) {
+export default function AppAddItemPanel({ onAdd, onInputChange, content }) {
 	return (
 		<Grid
 			container xs item
@@ -14,11 +14,14 @@ export default function AppAddItemPanel({ onAdd }) {
 			alignItems="stretch"
 		>
 			<Grid item xs={12} md={9}>
-				<TextAreaMultiline />
+				<TextAreaMultiline
+					onInputChange={onInputChange}
+					content={content}
+				/>
 			</Grid>
 			<TheButton
-				onAdd={()=> onAdd('123')}
-		/>
+				onAdd={onAdd}
+			/>
 		</Grid>
 	);
 }

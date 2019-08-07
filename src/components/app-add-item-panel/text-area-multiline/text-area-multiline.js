@@ -11,11 +11,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-function onInputChange(event) {
-  console.log(event.target.value);
-}
-
-export default function TextAreaMultiline() {
+export default function TextAreaMultiline({ onInputChange, content }) {
   const classes = useStyles();
   return (
     <TextField
@@ -26,6 +22,7 @@ export default function TextAreaMultiline() {
       className={classes.textField}
       margin="normal"
       onChange={onInputChange}
+      value={content}
     />
   );
 }

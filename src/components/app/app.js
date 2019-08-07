@@ -17,6 +17,13 @@ class App extends Component {
       this.createNewItem('2'),
       this.createNewItem('3')
     ],
+    content: ''
+  }
+
+  onInputChange = (event) => {
+    this.setState({
+      content: event.target.value
+    })
   }
 
   createNewItem(content) {
@@ -29,7 +36,6 @@ class App extends Component {
   }
 
   idx = (id) => this.state.todoData.findIndex((el) => el.id === id)
-
   onDelited = (id) => {
     this.setState(({ todoData }) => {
       const idx = this.idx(id)
@@ -38,11 +44,11 @@ class App extends Component {
       return { todoData: newTodoData }
     })
   }
-  onAdd = (content) => {
-    console.log('add');
-    this.setState(({ todoData }) => {
+
+  onAdd = () => {
+    this.setState(({ todoData, content }) => {
       const newItem = this.createNewItem(content)
-      return { todoData: [...todoData, newItem] }
+      return { todoData: [...todoData, newItem], content: '' }
     })
   }
 
@@ -90,6 +96,8 @@ class App extends Component {
         />
         <AppAddItemPanel
           onAdd={this.onAdd}
+          onInputChange={this.onInputChange}
+          content={this.state.content}
         />
       </>
     )
