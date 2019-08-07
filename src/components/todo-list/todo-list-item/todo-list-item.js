@@ -6,7 +6,6 @@ import ButtonDel from './button-del';
 import ButtonDone from './button-done';
 import ButtonImportant from './button-important';
 
-
 function TodoListItem({ content, done = false, important = false, ...props }) {
 
   return (
@@ -16,7 +15,11 @@ function TodoListItem({ content, done = false, important = false, ...props }) {
       alignItems="center"
     >
       <Grid >
-        <Typography>{content}</Typography>
+        <Typography>
+          <pre style={{ fontFamily: 'inherit' }}>
+            {content}
+          </pre>
+        </Typography>
       </Grid>
 
       <Grid >
