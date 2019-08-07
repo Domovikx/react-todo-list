@@ -48,7 +48,7 @@ class App extends Component {
   onAdd = () => {
     this.setState(({ todoData, content }) => {
       const newItem = this.createNewItem(content)
-      return { todoData: [...todoData, newItem], content: '' }
+      return { todoData: [newItem, ...todoData], content: '' }
     })
   }
 
@@ -86,18 +86,17 @@ class App extends Component {
           countDone={this.countDone}
           countImportant={this.countImportant}
         />
-        <AppSearchPanel
+        <AppSearchPanel />
+        <AppAddItemPanel
+          onAdd={this.onAdd}
+          onInputChange={this.onInputChange}
+          content={this.state.content}
         />
         <TodoList
           todoData={this.state.todoData}
           onDelited={this.onDelited}
           onImportant={this.onImportant}
           onDone={this.onDone}
-        />
-        <AppAddItemPanel
-          onAdd={this.onAdd}
-          onInputChange={this.onInputChange}
-          content={this.state.content}
         />
       </>
     )
