@@ -96,7 +96,10 @@ class App extends Component {
 
   onSearch(items = this.state.todoData, searchText = this.state.searchText) {
     if (searchText === 0) return items
-    return items.filter((item) => item.content.indexOf(searchText) > -1)
+    return items.filter((item) =>
+      item.content
+        .toLowerCase()
+        .indexOf(searchText.toLowerCase()) > -1)
   }
 
   render() {
