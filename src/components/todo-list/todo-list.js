@@ -2,24 +2,25 @@ import React, { Fragment } from 'react';
 
 import TodoListItem from './todo-list-item';
 
-function TodoList({ todoData, ...props }) {
+function TodoList({ todoData, visibility, ...props }) {
 
-  const elements = todoData.map((item) => {
+  let elements = null;
 
-    const { id, ...itemProps } = item;
-
-    return (
-      <Fragment key={id}>
-        <TodoListItem
-          {...itemProps}
-          onDelited={() => props.onDelited(id)}
-          onDone={() => props.onDone(id)}
-          onImportant={() => props.onImportant(id)}
-        />
-      </Fragment>
-    );
-  })
-
+  if (visibility.all) {
+    elements = todoData.map((item) => {
+      const { id, ...itemProps } = item;
+      return (
+        <Fragment key={id}>
+          <TodoListItem
+            {...itemProps}
+            onDelited={() => props.onDelited(id)}
+            onDone={() => props.onDone(id)}
+            onImportant={() => props.onImportant(id)}
+          />
+        </Fragment>
+      );
+    })
+  }
 
   return (
     <>

@@ -14,8 +14,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function AppSearchPanel() {
+
+export default function AppSearchPanel({ visibility, onSearchPanel }) {
   const classes = useStyles();
+
+  const onToggle = (toggle) => {
+    visibility[toggle] = !visibility[toggle]
+    onSearchPanel()
+  }
+
   return (
     <Grid
       container
@@ -25,8 +32,21 @@ export default function AppSearchPanel() {
     >
       <Grid className={classes.grid}>
         <SearchField />
-        <Button className={classes.btn}>Done</Button>
-        <Button className={classes.btn}>Important</Button>
+        <Button
+          className={classes.btn}
+          style={{ color: visibility.all ? 'darkcyan' : '' }}
+          onClick={() => onToggle('all')}
+        >All</Button>
+        <Button
+          className={classes.btn}
+          style={{ color: visibility.done ? 'darkcyan' : '' }}
+          onClick={() => onToggle('done')}
+        >Done</Button>
+        <Button
+          className={classes.btn}
+          style={{ color: visibility.important ? 'darkcyan' : '' }}
+          onClick={() => onToggle('important')}
+        >Important</Button>
       </Grid>
     </Grid>
   )

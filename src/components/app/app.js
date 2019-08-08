@@ -15,9 +15,14 @@ class App extends Component {
     todoData: [
       this.createNewItem('1'),
       this.createNewItem('2'),
-      this.createNewItem('3')
+      this.createNewItem('3'),
     ],
-    content: ''
+    content: '',
+    visibility: {
+      all: true,
+      done: false,
+      important: false,
+    }
   }
 
   onInputChange = (event) => {
@@ -77,6 +82,14 @@ class App extends Component {
   countDone = () => this.state.todoData.filter((el) => el.done).length
   countImportant = () => this.state.todoData.filter((el) => el.important).length
 
+  onSearchPanel = () => {
+    this.setState(({ visibility }) => {
+      console.log('visibility', visibility)
+      return { visibility }
+    }
+    )
+  }
+
   render() {
     return (
       <>
@@ -86,13 +99,17 @@ class App extends Component {
           countDone={this.countDone}
           countImportant={this.countImportant}
         />
-        <AppSearchPanel />
+        <AppSearchPanel
+          visibility={this.state.visibility}
+          onSearchPanel={this.onSearchPanel}
+        />
         <AppAddItemPanel
           onAdd={this.onAdd}
           onInputChange={this.onInputChange}
           content={this.state.content}
         />
         <TodoList
+          visibility={this.state.visibility}
           todoData={this.state.todoData}
           onDelited={this.onDelited}
           onImportant={this.onImportant}
