@@ -1,8 +1,21 @@
 import React from 'react';
 import SearchField from './search-field';
 import { Grid, Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles(theme => ({
+  grid: {
+    marginRight: theme.spacing(1),
+  },
+  btn: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+}));
 
 export default function AppSearchPanel() {
+  const classes = useStyles();
   return (
     <Grid
       container
@@ -10,13 +23,10 @@ export default function AppSearchPanel() {
       justify="flex-end"
       alignItems="flex-end"
     >
-      <Grid
-        style={{ marginRight: 10 }}
-      >
+      <Grid className={classes.grid}>
         <SearchField />
-        <Button>Search</Button>
-        <Button>Done</Button>
-        <Button>Important</Button>
+        <Button className={classes.btn}>Done</Button>
+        <Button className={classes.btn}>Important</Button>
       </Grid>
     </Grid>
   )
