@@ -102,9 +102,29 @@ class App extends Component {
         .indexOf(searchText.toLowerCase()) > -1)
   }
 
+  filter(items = this.state.todoData) {
+    const visibility = this.state.visibility
+    let filter = 'all'
+    
+    if (visibility.all) filter = 'all'
+    if (visibility.done) filter = 'done'
+    if (visibility.important) filter = 'important'
+
+    switch (filter) {
+      case 'all':
+        return items
+      case 'done':
+        return items.filter((item) => item.done)
+      case 'important':
+        return items.filter((item) => item.important)
+      default:
+        return items
+    }
+  }
+
   render() {
     const { visibility, content } = this.state
-    const visibleItems = this.onSearch()
+    const visibleItems = this.filter(this.onSearch())
     console.log('visibleItems', visibleItems)
 
     return (
