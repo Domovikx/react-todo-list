@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function TodoListItem({ content, done = false, important = false, ...props }) {
+function TodoListItem({ content, done, important, ...props }) {
   const classes = useStyles();
   return (
     <Grid

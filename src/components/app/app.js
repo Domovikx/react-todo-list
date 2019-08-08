@@ -84,7 +84,6 @@ class App extends Component {
 
   onSearchPanel = () => {
     this.setState(({ visibility }) => {
-      console.log('visibility', visibility)
       return { visibility }
     }
     )

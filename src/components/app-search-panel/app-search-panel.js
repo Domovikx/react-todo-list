@@ -19,6 +19,9 @@ export default function AppSearchPanel({ visibility, onSearchPanel }) {
   const classes = useStyles();
 
   const onToggle = (toggle) => {
+    visibility.all = false
+    visibility.done = false
+    visibility.important = false
     visibility[toggle] = !visibility[toggle]
     onSearchPanel()
   }
