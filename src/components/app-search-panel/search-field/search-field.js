@@ -15,8 +15,14 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function SearchField() {
+export default function SearchField({ onSetSearchText }) {
     const classes = useStyles();
+
+    let onChange = (e) => {
+        const text = e.target.value
+        onSetSearchText(text)
+    }
+
     return (
         <form className={classes.container} noValidate autoComplete="off">
             <TextField
@@ -25,6 +31,7 @@ export default function SearchField() {
                 type="search"
                 className={classes.textField}
                 margin="normal"
+                onChange={onChange}
             />
         </form>
     );

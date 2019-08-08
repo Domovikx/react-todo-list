@@ -13,16 +13,17 @@ class App extends Component {
 
   state = {
     todoData: [
-      this.createNewItem('1'),
-      this.createNewItem('2'),
-      this.createNewItem('3'),
+      this.createNewItem('asd'),
+      this.createNewItem('zxc'),
+      this.createNewItem('qwe'),
     ],
     content: '',
     visibility: {
       all: true,
       done: false,
       important: false,
-    }
+    },
+    searchText: '',
   }
 
   onInputChange = (event) => {
@@ -89,7 +90,20 @@ class App extends Component {
     )
   }
 
+  onSetSearchText = (text) => {
+    this.setState({ searchText: text })
+  }
+
+  onSearch(items = this.state.todoData, searchText = this.state.searchText) {
+    if (searchText === 0) return items
+    return items.filter((item) => item.content.indexOf(searchText) > -1)
+  }
+
   render() {
+    const { visibility, content } = this.state
+    const visibleItems = this.onSearch()
+    console.log('visibleItems', visibleItems)
+
     return (
       <>
         <CssBaseline />
@@ -99,17 +113,18 @@ class App extends Component {
           countImportant={this.countImportant}
         />
         <AppSearchPanel
-          visibility={this.state.visibility}
+          visibility={visibility}
           onSearchPanel={this.onSearchPanel}
+          onSetSearchText={this.onSetSearchText}
         />
         <AppAddItemPanel
           onAdd={this.onAdd}
           onInputChange={this.onInputChange}
-          content={this.state.content}
+          content={content}
         />
         <TodoList
-          visibility={this.state.visibility}
-          todoData={this.state.todoData}
+          visibility={visibility}
+          todoData={visibleItems}
           onDelited={this.onDelited}
           onImportant={this.onImportant}
           onDone={this.onDone}

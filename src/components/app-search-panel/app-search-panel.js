@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function AppSearchPanel({ visibility, onSearchPanel }) {
+export default function AppSearchPanel({ visibility, onSearchPanel, onSetSearchText }) {
   const classes = useStyles();
 
   const onToggle = (toggle) => {
@@ -34,7 +34,9 @@ export default function AppSearchPanel({ visibility, onSearchPanel }) {
       alignItems="flex-end"
     >
       <Grid className={classes.grid}>
-        <SearchField />
+        <SearchField
+          onSetSearchText={onSetSearchText}
+        />
         <Button
           className={classes.btn}
           style={{ color: visibility.all ? 'darkcyan' : '' }}
